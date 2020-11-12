@@ -1,0 +1,490 @@
+@import url('https://fonts.googleapis.com/css?family=Cabin|Herr+Von+Muellerhoff|Source+Sans+Pro:400,900&display=swap');
+/*Global styles*/
+*,
+*::before,
+*::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --main-font: 'Source Sans Pro', sans-serif;
+    --secondary-font: 'Herr Von Muellerhoff', cursive;
+    --body-font: 'Cabin', sans-serif;
+    --main-font-color-dark: #252525;
+    --secondary-font-color: #e2b572;
+    --alternative-color: #5B9C84;
+    --body-font-color: #515151;
+}
+
+html{
+    font-family: var(--body-font);
+    font-size: 10px;
+    color: white;
+    scroll-behavior: smooth;
+}
+
+body{
+    font-family: var(--main-font);
+    font-weight: 100;
+    background-image: linear-gradient(to bottom, #bb00bb, #bb00bb, #bb00bb, #9400d3);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+body{
+    overflow-x: hidden;
+}
+
+
+section{
+    padding: 3.9rem 0;   /* top and bottom 3.9rem and left and right 0 */
+    /* rem is font size of root element (helps in scalability) */
+    overflow: hidden;
+}
+
+img{
+    width: 100%;
+    max-width: 100%; /* Makes sure that even if the image is larger than the size of the section it does not overflow its parent element*/
+}
+
+a{
+    text-decoration: none;
+}
+
+.container{
+    width: 100%;
+    max-width: 122.5rem; /*the container is only going to be 1225 pixels as far as thw width*/
+    margin: 0 auto;
+    padding: 0 2.4rem;
+}
+
+/* Header Styles*/
+header{
+    width: 100%;
+    position: absolute; /* An element with position: absolute; is positioned relative to the nearest positioned ancestor (instead of positioned relative to the viewport, like fixed). However; if an absolute positioned element has no positioned ancestors, it uses the document body, and moves along with page scrolling.*/
+    /* starts at zero from the top and left*/
+    top: 0;
+    left: 0;
+    z-index: 1; /*The z-index property specifies the stack order of an element.*/
+    background-image: linear-gradient(to bottom, rgba(0,0,0,.5), transparent);
+}
+
+.logo{
+    width: 20rem;
+    height: 9rem;
+}
+
+.nav{
+    height: 7.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu-toggle{
+    color: white;
+    font-size: 2.2rem;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%); /* make sure it's perfectly centered in the header*/
+    right: 2.5rem;
+    cursor: pointer; /*goves illusion it is clickable*/
+    z-index: 1500;
+}
+
+.menu-toggle .fa-times{
+    display: none;
+}
+
+.nav-list{
+    list-style: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 80%;
+    height: 100vh; /* viewport height*/
+    background-color: var(--main-font-color-dark);
+    padding: 4.4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around; /*	Items are positioned with space before, between, and after the lines*/
+    z-index: 1250;
+    transform: translateX(-100%);
+    transition: transform .5s;
+}
+
+.nav::before{
+    /* changing color behind when navigation is open*/
+    content: ''; /* so that it shows up*/
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, .8);
+    z-index: 1000;
+    opacity: 0; /* use js to make it visible later when its used*/
+    transform: scale(0); /* even though we can't see it, its there so we scale it to zero to hide it*/
+    transition: opacity .5s;
+}
+
+.open .fa-times{
+    display: block;
+}
+
+.open .fa-bars{
+    display: none;
+}
+
+.open .nav-list{
+    transform: translateX(0);
+}
+
+.open .nav::before{
+    opacity: 1;
+    transform: scale(1);
+}
+
+.nav-item{
+    border-bottom: 2px solid rgba(255,255,255,.3);
+}
+
+.nav-link{
+    display: block;
+    color: white;
+    text-transform: uppercase;
+    font-size: 1.6rem;
+    letter-spacing: 2px;
+    margin-right: -2px;
+    transition: color .5s;
+}
+
+.nav-link:hover{
+    color: var(--secondary-font-color);
+}
+/* header ends */
+
+h2 {
+    font-size: 8.5rem;
+    font-family: var(--secondary-font);
+    color: var(--secondary-font-color);
+    font-weight: 100;  /* 400 is supposed to be equal to normal, while 700 is equal to bold.*/
+    line-height: .8;
+    letter-spacing: 2px;
+}
+
+.first-letter{
+    text-transform: uppercase;
+    font-size: 10.3rem;
+}
+
+/* My css */
+.heading {
+    min-height: 25vh;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    /*animation: fadeAway 2s forwards;*/
+}
+
+#subheader {
+    margin-top: 2rem;
+}
+
+.info {
+    font-size: 2rem;
+    position: absolute;
+    top: 33%;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: fadeIn 4s forwards;
+    margin-top: 2rem;
+}
+
+#description, #cursor {
+    font-family: var(--main-font);
+    color: var(--secondary-font-color);
+    font-size: 2rem;
+}
+
+#cursor-animation {
+    font-family: var(--main-font);
+    color: var(--secondary-font-color);
+    font-size: 2rem;
+    animation: blink-animation 0.7s steps(3, start) infinite;
+}
+/* Title Ends */
+
+.search-wrap {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, 200%);
+    background-color: #252525;
+    width: 25rem;
+    height: 5rem;
+    border: none;
+    border-radius: 3rem;
+    text-align: center;
+}
+
+.search-wrap-2 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    background-color: #252525;
+    width: 25rem;
+    height: 5rem;
+    border: none;
+    border-radius: 3rem;
+    text-align: center;
+}
+
+#bookName {
+    padding: 1rem;
+    border-radius: 3rem;
+    border: none;
+    outline: none;
+    width: 19.5rem;
+    background-color: #252525;
+    color: white;
+    font-family: var(--main-font);
+}
+
+#bookName::placeholder {
+    font-family: var(--main-font);
+}
+
+#btn-search {
+    color: white;
+    border: 0.01rem solid white;
+    height: 5rem;
+    width: 5rem;
+    border-radius: 3rem;
+    outline: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+#btn-search:active {
+    color: #252525;
+    background-color: white;
+}
+/* Search Bar Ends */
+
+#result {
+    position: absolute;
+    top: 27rem;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    text-align: center;
+    width: 100vw;
+    margin-top: 2rem;
+}
+
+.no-result {
+    display: block;
+    min-width: 35rem;
+    margin: 5rem;
+    font-size: 2.5rem;
+    animation: fadeIn 1s forwards;
+}
+
+.book-list {
+    max-width: 25vw;
+    max-height: 30rem;
+    overflow: hidden;
+    text-align: center;
+    font-size: 1.5rem;
+    margin: 2rem;
+    animation: fadeIn 1s forwards;
+}
+
+.book-title {
+    font-size: 2.2rem;
+    color: var(--secondary-font-color);
+}
+
+.book-list a {
+    color: white;
+}
+
+.book-list a:active {
+    color: #e2b572;
+}
+
+.book-list img {
+    transform: scale(0.7, 0.7) translateY(-20%);
+}
+/* SQL Result Ends */
+
+/* Form Heading */
+#title-text {
+    font-family: var(--secondary-font);
+    font-size: 5rem;
+    position: absolute;
+    left: 50%;
+    top: 20%;
+    transform: translateX(-50%);
+}
+
+#book-detail-form {
+    position: absolute;
+    top: 30%;
+    animation: fadeIn 1.5s forwards;
+}
+
+label {
+    font-size: 2rem;
+}
+
+form input[type="button"],  form input[type="submit"], form input[type="file"]::-webkit-file-upload-button{
+    background-color: #252525;
+    color: white;
+    outline: none;
+    border: none;
+    height: 3.5rem;
+    width: 10rem;
+    border-radius: 3rem;
+    margin-left: 1rem;
+    cursor: pointer;
+}
+
+form input[type="button"]:active,  form input[type="submit"]:active, form input[type="file"]::-webkit-file-upload-button:active{
+    background-color: white;
+    color: #252525;
+}
+
+form input[type="text"], form input[type="number"] {
+    border: none;
+    outline: none;
+    border-radius: 3rem;
+    height: 3rem;
+    width: max-content;
+    margin: 2rem 0 0 2rem;
+    padding: 0 1rem;
+}
+
+.error {
+    background-color: white;
+    color: red;
+    font-size: 1.5rem;
+}
+/* Form Ended */
+
+/* Media Queries */
+/* Incidates that if the screen size is >= min-width then below properties will be applied*/
+@media screen and (min-width: 900px){          
+    section{
+        padding: 7.9rem;
+    }
+
+    .menu-toggle{
+        display: none;
+    }
+
+    .nav{
+        justify-content: space-between;
+    }
+
+    .nav-list{
+        position: initial;
+        width: initial;
+        height: initial;
+        background-color: transparent;
+        padding: 0;
+        justify-content: initial;
+        flex-direction: row;
+        transform: initial;
+        transition: initial;
+    }
+
+    .nav-item{
+        margin: 0 2.4rem;
+        border: 0;
+    }
+
+    .nav-item:last-child{
+        margin-right: 0;
+    }
+
+    .nav-link{
+        font-size: 1.3rem;
+    }
+
+    .active{
+        position: relative;
+    }
+
+    .active::before{
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        background-color: white;
+        left: 0;
+        bottom: -3px;
+    }
+
+    h2 {
+        line-height: .4;
+    }
+
+    .search-wrap {
+        top: 50%;
+        transform: translate(-50%, 50%);
+    }
+
+    .info {
+        top: 30%;
+    }
+
+    .no-result {
+        min-width: 110rem;
+    }
+
+    #result {
+        grid-template-columns: 25% 25% 25% 25%;
+    }
+}
+
+/* Animations */
+@keyframes blink-animation {
+    to {
+      visibility: hidden;
+    }
+}
+@-webkit-keyframes blink-animation {
+    to {
+      visibility: hidden;
+    }
+}
+
+@keyframes fadeAway {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes moveUp {
+    to {
+        transform: translate(-50%, -400%);
+    }
+}

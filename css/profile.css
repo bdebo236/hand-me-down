@@ -1,0 +1,328 @@
+  
+@import url('https://fonts.googleapis.com/css?family=Cabin|Herr+Von+Muellerhoff|Source+Sans+Pro:400,900&display=swap');
+/*Global styles*/
+*,
+*::before,
+*::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --main-font: 'Source Sans Pro', sans-serif;
+    --secondary-font: 'Herr Von Muellerhoff', cursive;
+    --body-font: 'Cabin', sans-serif;
+    --main-font-color-dark: #252525;
+    --secondary-font-color: #c59d5f;
+    --body-font-color: #515151;
+    --alternative-color: #5B9C84;
+}
+
+html{
+    font-family: var(--body-font);
+    font-size: 10px;
+    color: var(--body-font-color);
+    scroll-behavior: smooth;
+}
+
+/* overflow property controls what happens to content that is too big 
+to fit into an area. hidden-> content will be cut off at the boundaries of the element*/
+body{
+    overflow-x: hidden;
+    background-image: linear-gradient(to bottom, #bb00bb, #bb00bb, #bb00bb, #9400d3);
+}
+
+section{
+    padding: 3.9rem 0;   /* top and bottom 3.9rem and left and right 0 */
+    /* rem is font size of root element (helps in scalability) */
+    overflow: hidden;
+}
+
+img{
+    width: 100%;
+    max-width: 100%; /* Makes sure that even if the image is larger than the size of the section it does not overflow its parent element*/
+}
+
+a{
+    text-decoration: none;
+}
+
+p{
+    font-size: 1.6rem;
+}
+
+.container{
+    width: 100%;
+    height: fit-content;
+    max-width: 122.5rem; /*the container is only going to be 1225 pixels as far as thw width*/
+    margin: 0 auto;
+    padding: 0 2.4rem;
+}
+
+/* Header Styles*/
+header{
+    width: 100%;
+    position: absolute; /* An element with position: absolute; is positioned relative to the nearest positioned ancestor (instead of positioned relative to the viewport, like fixed). However; if an absolute positioned element has no positioned ancestors, it uses the document body, and moves along with page scrolling.*/
+    /* starts at zero from the top and left*/
+    top: 0;
+    left: 0;
+    z-index: 1; /*The z-index property specifies the stack order of an element.*/
+    background-image: linear-gradient(to bottom, rgba(0,0,0,.5), transparent);
+}
+
+.logo{
+    width: 20rem;
+    height: 9rem;
+}
+
+.nav{
+    height: 7.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    grid-area: nav;
+}
+
+.menu-toggle{
+    color: white;
+    font-size: 2.2rem;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%); /* make sure it's perfectly centered in the header*/
+    right: 2.5rem;
+    cursor: pointer; /*goves illusion it is clickable*/
+    z-index: 1500;
+}
+
+.menu-toggle .fa-times{
+    display: none;
+}
+
+.nav-list{
+    list-style: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 80%;
+    height: 100vh; /* viewport height*/
+    background-color: var(--main-font-color-dark);
+    padding: 4.4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around; /*	Items are positioned with space before, between, and after the lines*/
+    z-index: 1250;
+    transform: translateX(-100%);
+    transition: transform .5s;
+}
+
+.nav::before{
+    /* changing color behind when navigation is open*/
+    content: ''; /* so that it shows up*/
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, .8);
+    z-index: 1000;
+    opacity: 0; /* use js to make it visible later when its used*/
+    transform: scale(0); /* even though we can't see it, its there so we scale it to zero to hide it*/
+    transition: opacity .5s;
+}
+
+.open .fa-times{
+    display: block;
+}
+
+.open .fa-bars{
+    display: none;
+}
+
+.open .nav-list{
+    transform: translateX(0);
+}
+
+.open .nav::before{
+    opacity: 1;
+    transform: scale(1);
+}
+
+.nav-item{
+    border-bottom: 2px solid rgba(255,255,255,.3);
+}
+
+.nav-link{
+    display: block;
+    color: white;
+    text-transform: uppercase;
+    font-size: 1.6rem;
+    letter-spacing: 2px;
+    margin-right: -2px;
+    transition: color .5s;
+}
+
+.nav-link:hover{
+    color: var(--secondary-font-color);
+}
+
+.hero{
+    width: 100%;
+    display: flex;
+    text-align: center;
+    top: 25%;
+}
+
+h1{
+    font-size: 8.5rem;
+    font-family: var(--secondary-font);
+    color: var(--secondary-font-color);
+    font-weight: 100;  /* 400 is supposed to be equal to normal, while 700 is equal to bold.*/
+    line-height: .4;
+    letter-spacing: 2px;
+    padding-top: 8rem;
+    padding-bottom: 5rem;
+}
+
+#personal-info{
+    color: white;
+    font-size: 2rem;
+    font-family: var(--main-font);
+    text-transform: uppercase;
+    font-weight: 300;
+    letter-spacing: .5rem;
+    padding-bottom: 5rem;
+}
+
+.btn-chat{
+    width: 130px;
+    height: 35px;
+    border: none;
+    outline: none;
+    border-radius: 49px;
+    cursor: pointer;
+    background-color: var(--secondary-font-color);
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin: 10px 0;
+    transition: .5s;
+}
+
+.btn-chat:hover{
+    background-color: var(--alternative-color);
+}
+
+#books-requested{
+    background-color: rgb(241, 200, 245, 0.9);
+    color: black;
+    font-size: 2rem;
+    font-family: var(--body-font);
+    font-weight: 400;
+    letter-spacing: .5rem;
+    padding-bottom: 5rem;
+    width: 49%;
+}
+
+#books-on-sale{
+    background-color: rgb(241, 200, 245, 0.9);
+    color: black;
+    font-size: 2rem;
+    font-family: var(--body-font);
+    font-weight: 400;
+    letter-spacing: .5rem;
+    padding-bottom: 5rem;
+    width: 49%;
+}
+
+h2{
+    color: #C54B8C;
+    font-family: var(--main-font);
+    text-transform: uppercase;
+    letter-spacing: .5rem;
+    line-height: 3rem;
+    padding-bottom: 5rem;
+    padding-top: 5rem;
+    word-wrap: break-word;
+}
+
+.fa-trash {
+    cursor: pointer;
+}
+
+
+/* Media Queries */
+/* Incidates that if the screen size is >= min-width then below properties will be applied*/
+@media screen and (min-width: 900px){          
+    section{
+        padding: 7.9rem;
+    }
+
+    .menu-toggle{
+        display: none;
+    }
+
+    .nav{
+        justify-content: space-between;
+    }
+
+    .nav-list{
+        position: initial;
+        width: initial;
+        height: initial;
+        background-color: transparent;
+        padding: 0;
+        justify-content: initial;
+        flex-direction: row;
+        transform: initial;
+        transition: initial;
+    }
+
+    .nav-item{
+        margin: 0 2.4rem;
+        border: 0;
+    }
+
+    .nav-item:last-child{
+        margin-right: 0;
+    }
+
+    .nav-link{
+        font-size: 1.3rem;
+    }
+
+    .active{
+        position: relative;
+    }
+
+    .active::before{
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        background-color: white;
+        left: 0;
+        bottom: -3px;
+    }
+
+    .content-divider{
+        display: flex;
+        justify-content: space-between;
+        margin: 0 auto 5.4rem;
+    }
+
+ 
+}
+
+@keyframes up{
+    0%{
+        opacity: 0;
+    }
+    50%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+        transform: translateY(-1rem);
+    }
+}

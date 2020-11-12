@@ -1,0 +1,85 @@
+.transition-1{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1700;
+    background: linear-gradient(-45deg,#8B008B,#9400D3);
+    margin: 0 auto;
+    opacity: 0;
+    pointer-events: none;
+    transition: .6s ease-out;
+}
+
+.transition-1.is-active{
+    opacity: 1;
+    pointer-events: all;
+}
+
+.transition-2{
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    bottom: 0;
+    z-index: 1700;
+    background: linear-gradient(-45deg,#8B008B,#9400D3);
+    transition: .6s ease-out;
+}
+
+.transition-2.is-active{
+    left: 0px;
+}
+
+.transition-3{
+    position: fixed;
+    top: 100%;
+    left: 0;
+    right: 0;
+    height: 100%;
+    z-index: 1700;
+    background: linear-gradient(-45deg,#8B008B,#9400D3);
+    transition: .6s ease-out;
+}
+
+.transition-3.is-active{
+    top: 0;
+}
+
+
+.loading{
+    margin: 0 auto;
+    width: 60px;
+    margin: 43vh auto;
+}
+
+.dot{
+    width: 12px;
+    height: 12px;
+    background-color: white;
+    display: inline-block;
+    border-radius: 50%;
+}
+
+.dot-1{
+    background-color: gold;
+    animation: jump-up .6s .1s linear infinite;
+}
+
+.dot-2{
+    background-color:goldenrod;
+    animation: jump-up .6s .2s linear infinite;
+}
+
+.dot-3{
+    background-color: orange;
+    animation: jump-up .6s .3s linear infinite;
+}
+
+
+@keyframes jump-up{
+    50%{
+        transform: translate(0,10px);
+    }
+}
