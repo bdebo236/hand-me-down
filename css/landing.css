@@ -173,7 +173,7 @@ header{
 
 .hero::after {
   content: "";
-  background: url("images/top-view-books-glasses.jpg") center no-repeat;
+  background: url("../images/top-view-books-glasses.jpg") center no-repeat;
   background-size: cover;
   top: 0;
   left: 0;
@@ -366,7 +366,7 @@ header{
 
 /* Find a book */
 .find-a-book{
-    background: url(images/top-view-books-glasses.jpg) center no-repeat;
+    background: url(../images/top-view-books-glasses.jpg) center no-repeat;
     background-size: cover;
     height: 100vh;
 }
@@ -392,7 +392,7 @@ header{
 
 /* Donate or Sell */
 .donate-or-sell{
-    background: url(images/top-view-books-glasses.jpg) center no-repeat;
+    background: url(../images/top-view-books-glasses.jpg) center no-repeat;
     background-size: cover;
 }
 
